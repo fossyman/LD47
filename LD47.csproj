@@ -58,8 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scenes\DungeonGenerator.cs" />
-    <Compile Include="Scenes\Rooms\DungeonRoomManager.cs" />
+    <Compile Include="Scripts\DungeonRoomManager.cs" />
     <Compile Include="Scripts\CameraFollower.cs" />
     <Compile Include="Scripts\PlayerManager.cs" />
   </ItemGroup>
