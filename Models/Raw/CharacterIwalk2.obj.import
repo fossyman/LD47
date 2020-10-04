@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/CharacterIwalk2.obj-7ca128e5d98db07e461eedc77d33593c.mesh"
+
+[deps]
+
+files=[ "res://.import/CharacterIwalk2.obj-7ca128e5d98db07e461eedc77d33593c.mesh" ]
+
+source_file="res://Models/Raw/CharacterIwalk2.obj"
+dest_files=[ "res://.import/CharacterIwalk2.obj-7ca128e5d98db07e461eedc77d33593c.mesh", "res://.import/CharacterIwalk2.obj-7ca128e5d98db07e461eedc77d33593c.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
