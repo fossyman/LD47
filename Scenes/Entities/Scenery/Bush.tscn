@@ -226,11 +226,11 @@ surfaces/0 = {
 "vertex_count": 70
 }
 
-[sub_resource type="CylinderShape" id=18]
-radius = 3.79514
+[sub_resource type="CylinderShape" id=19]
+radius = 1.07216
 height = 4.43739
 
-[sub_resource type="BoxShape" id=17]
+[sub_resource type="BoxShape" id=18]
 extents = Vector3( 1, 1.43005, 1 )
 
 [node name="Bush" type="Spatial"]
@@ -240,81 +240,97 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 
 [node name="Cube003" type="MeshInstance" parent="Mesh"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.254896, -0.0973241, 0 )
+cast_shadow = 2
 mesh = SubResource( 1 )
 material/0 = ExtResource( 2 )
 
 [node name="Cube005" type="MeshInstance" parent="Mesh"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.7, -0.370759, 0.296607, 0 )
+cast_shadow = 2
 mesh = SubResource( 2 )
 material/0 = ExtResource( 2 )
 
 [node name="Cube" type="MeshInstance" parent="Mesh"]
 transform = Transform( -0.976771, 0, 0, 0, -0.099, 0, 0, 0, -0.099, -0.126264, 0.213198, 0.11595 )
+cast_shadow = 2
 mesh = SubResource( 3 )
 material/0 = ExtResource( 3 )
 
 [node name="Cube004" type="MeshInstance" parent="Mesh"]
 transform = Transform( -0.879094, 0, 0, 0, -0.099, 0, 0, 0, -0.099, -0.126264, 0.617159, -0.411475 )
+cast_shadow = 2
 mesh = SubResource( 4 )
 material/0 = ExtResource( 3 )
 
 [node name="Cube006" type="MeshInstance" parent="Mesh"]
 transform = Transform( -0.586062, 0, 0, 0, -0.099, 0, 0, 0, -0.099, -0.091377, 1.04723, 0.489981 )
+cast_shadow = 2
 mesh = SubResource( 5 )
 material/0 = ExtResource( 3 )
 
 [node name="Cube007" type="MeshInstance" parent="Mesh"]
 transform = Transform( -0.976771, 0, 0, 0, -0.099, 0, 0, 0, -0.099, -0.126264, -0.321667, 0.684477 )
+cast_shadow = 2
 mesh = SubResource( 6 )
 material/0 = ExtResource( 3 )
 
 [node name="Cube010" type="MeshInstance" parent="Mesh"]
 transform = Transform( 0, 0, -0.099, 0, -0.099, 0, 0.109711, 0, 0, 0.224419, 0.942214, 0.839766 )
+cast_shadow = 2
 mesh = SubResource( 7 )
 material/0 = ExtResource( 3 )
 
 [node name="Cube008" type="MeshInstance" parent="Mesh"]
 transform = Transform( 0, 0, -0.099, 0, -0.099, 0, 1.09711, 0, 0, -0.568527, -0.306705, 0 )
+cast_shadow = 2
 mesh = SubResource( 8 )
 material/0 = ExtResource( 3 )
 
 [node name="Cube009" type="MeshInstance" parent="Mesh"]
 transform = Transform( 0, 0, -0.099, 0, -0.099, 0, 1.09711, 0, 0, 0.265562, -0.11595, 0 )
+cast_shadow = 2
 mesh = SubResource( 9 )
 material/0 = ExtResource( 3 )
 
 [node name="Cube011" type="MeshInstance" parent="Mesh"]
 transform = Transform( 0, 0, -0.099, 0, -0.099, 0, 1.09711, 0, 0, -0.374031, 0.572268, 0 )
+cast_shadow = 2
 mesh = SubResource( 10 )
 material/0 = ExtResource( 3 )
 
 [node name="Cube012" type="MeshInstance" parent="Mesh"]
 transform = Transform( 0, 0, -0.099, 0, -0.099, 0, 1.09711, 0, 0, -0.32935, 0.125674, 0 )
+cast_shadow = 2
 mesh = SubResource( 11 )
 material/0 = ExtResource( 3 )
 
 [node name="Cube013" type="MeshInstance" parent="Mesh"]
 transform = Transform( 0, 0, -0.099, 0, -0.099, 0, 0.0912795, 0, 0, 0.0950614, 0.903134, -0.820133 )
+cast_shadow = 2
 mesh = SubResource( 12 )
 material/0 = ExtResource( 3 )
 
 [node name="Cube014" type="MeshInstance" parent="Mesh"]
 transform = Transform( -0.967003, 0, 0, 0, -0.099, 0, 0, 0, -0.099, -0.0573291, -0.37195, -0.556367 )
+cast_shadow = 2
 mesh = SubResource( 13 )
 material/0 = ExtResource( 3 )
 
 [node name="Cube015" type="MeshInstance" parent="Mesh"]
 transform = Transform( 0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 0, -0.713724, 0 )
+cast_shadow = 2
 mesh = SubResource( 14 )
 material/0 = ExtResource( 4 )
 
 [node name="Cube001" type="MeshInstance" parent="Mesh"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.8, -0.0898296, 0.259531, 0 )
+cast_shadow = 2
 mesh = SubResource( 15 )
 material/0 = ExtResource( 2 )
 
 [node name="Cube002" type="MeshInstance" parent="Mesh"]
 transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.44, -0.621021, -0.244386, 0 )
+cast_shadow = 2
 mesh = SubResource( 16 )
 material/0 = ExtResource( 2 )
 
@@ -322,9 +338,9 @@ material/0 = ExtResource( 2 )
 collision_mask = 32
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
-shape = SubResource( 18 )
+shape = SubResource( 19 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-shape = SubResource( 17 )
+shape = SubResource( 18 )
