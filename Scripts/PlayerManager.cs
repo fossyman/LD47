@@ -3,6 +3,7 @@ using System;
 
 public class PlayerManager : KinematicBody
 {
+
 private Vector3 _Velocity;
 [Export]private float _Movespeed;
 private Camera _Camera;
@@ -20,31 +21,35 @@ private Area TouchingArea;
     {
         _Camera = (Camera)Owner.FindNode("Camera");
         PlayerCollision = (CollisionShape)FindNode("Collision");
-        PlayerTriggerArea = (Area)FindNode("Area");
+        PlayerTriggerArea = (Area)FindNode("PlayerArea");
         PlayerTriggerArea.Connect("area_entered",this,"CheckTriggerAreaEnterCollision");
         PlayerTriggerArea.Connect("area_exited",this,"CheckTriggerAreaExitCollision");
         PlayerAnimationsTree = (AnimationTree)FindNode("AnimationTree");
         manager = (GameManager)Owner;
+        CanLook=true;
+        CanMove=true;
     }
 
     public override void _Process(float delta)
    {
+       manager.PlayerPrevPos = GlobalTransform;
       GetMovementInputValues();
 
       if(_Velocity != Vector3.Zero)
       {
-            var AnimTreeBlend = Mathf.Lerp((float)PlayerAnimationsTree.Get("parameters/Blend2/blend_amount"),1f,0.07f);
-            PlayerAnimationsTree.Set("parameters/Blend2/blend_amount",AnimTreeBlend);  
+            var AnimTreeBlend = Mathf.Lerp((float)PlayerAnimationsTree.Get("parameters/walkidle/blend_amount"),1f,0.07f);
+            PlayerAnimationsTree.Set("parameters/walkidle/blend_amount",AnimTreeBlend);  
       }
       else
       {
-            var AnimTreeBlend = Mathf.Lerp((float)PlayerAnimationsTree.Get("parameters/Blend2/blend_amount"),0f,0.07f);
-            PlayerAnimationsTree.Set("parameters/Blend2/blend_amount",AnimTreeBlend);  
+            var AnimTreeBlend = Mathf.Lerp((float)PlayerAnimationsTree.Get("parameters/walkidle/blend_amount"),0f,0.07f);
+            PlayerAnimationsTree.Set("parameters/walkidle/blend_amount",AnimTreeBlend);  
       }
       if(CanMove)
       {
       MoveAndSlide(_Velocity * _Movespeed);
       }
+
    }
 
     private void GetMovementInputValues()
@@ -54,6 +59,10 @@ private Area TouchingArea;
         if(Input.IsActionPressed("move_back")){ _Velocity.z += _Movespeed; }
         if(Input.IsActionPressed("move_left")){ _Velocity.x += -_Movespeed; }
         if(Input.IsActionPressed("move_right")){ _Velocity.x += _Movespeed; }
+        if(Input.IsActionJustPressed("attack"))
+        {
+            PlayerAnimationsTree.Set("parameters/attack/active",true);
+        }
         if(Input.IsActionJustPressed("interact"))
         {
             if(TouchingArea != null)
@@ -61,7 +70,7 @@ private Area TouchingArea;
             switch(TouchingArea.CollisionMask)
             {
                 case 32:
-                if(CanPickBerries){PlayerAnimationsTree.Set("parameters/OneShot/active",true); manager.BerryCount++;}
+                if(CanPickBerries){PlayerAnimationsTree.Set("parameters/pickberry/active",true); manager.BerryCount++;}
                 break;
             }
 

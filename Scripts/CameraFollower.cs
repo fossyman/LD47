@@ -10,7 +10,6 @@ private Spatial CameraFollowPoint;
   public override void _Ready()
   {
     CameraFollowPoint = (Spatial)GetNode(CameraFollowPointPath);
-    GD.Print(CameraFollowPoint.Name);
   }
   public override void _PhysicsProcess(float delta)
   {
