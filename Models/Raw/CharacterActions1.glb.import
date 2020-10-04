@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/Character Idle.glb-d8c5e5241a15ba5f8414465ee75bc1a0.scn"
+path="res://.import/CharacterActions1.glb-973875a6fc04d8e8820cea68c3f5aa61.scn"
 
 [deps]
 
-source_file="res://Character Idle.glb"
-dest_files=[ "res://.import/Character Idle.glb-d8c5e5241a15ba5f8414465ee75bc1a0.scn" ]
+source_file="res://Models/Raw/CharacterActions1.glb"
+dest_files=[ "res://.import/CharacterActions1.glb-973875a6fc04d8e8820cea68c3f5aa61.scn" ]
 
 [params]
 
