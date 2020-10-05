@@ -71,6 +71,7 @@ attack={
 3d_physics/layer_2="Items"
 3d_physics/layer_3="Floor"
 3d_physics/layer_4="Walls"
+3d_physics/layer_5="Mouse"
 3d_physics/layer_11="Weapons"
 
 [rendering]

@@ -8,6 +8,8 @@ private Vector3 _Velocity;
 [Export]private float _Movespeed;
 private Camera _Camera;
 private CollisionShape PlayerCollision;
+
+private RayCast FloorRay;
 private Area PlayerTriggerArea;
 private AnimationTree PlayerAnimationsTree;
 private GameManager manager;
@@ -20,6 +22,7 @@ private Area TouchingArea;
     public override void _Ready()
     {
         _Camera = (Camera)Owner.FindNode("Camera");
+        FloorRay = (RayCast)FindNode("Raycast");
         PlayerCollision = (CollisionShape)FindNode("Collision");
         PlayerTriggerArea = (Area)FindNode("PlayerArea");
         PlayerTriggerArea.Connect("area_entered",this,"CheckTriggerAreaEnterCollision");
@@ -34,8 +37,7 @@ private Area TouchingArea;
    {
        manager.PlayerPrevPos = GlobalTransform;
       GetMovementInputValues();
-
-      if(_Velocity != Vector3.Zero)
+      if(_Velocity.x != 0 || _Velocity.z != 0)
       {
             var AnimTreeBlend = Mathf.Lerp((float)PlayerAnimationsTree.Get("parameters/walkidle/blend_amount"),1f,0.07f);
             PlayerAnimationsTree.Set("parameters/walkidle/blend_amount",AnimTreeBlend);  
@@ -47,14 +49,24 @@ private Area TouchingArea;
       }
       if(CanMove)
       {
-      MoveAndSlide(_Velocity * _Movespeed);
+      MoveAndSlide(_Velocity * _Movespeed,Vector3.Up,true);
       }
 
    }
 
     private void GetMovementInputValues()
     {
-        _Velocity = Vector3.Zero;
+        _Velocity.x=0;
+        _Velocity.z=0;
+
+if(FloorRay.IsColliding())
+{
+    _Velocity.y= 0;
+}
+else
+{
+    _Velocity.y+= -0.5f;    
+}
         if(Input.IsActionPressed("move_forward")){ _Velocity.z += -_Movespeed; }
         if(Input.IsActionPressed("move_back")){ _Velocity.z += _Movespeed; }
         if(Input.IsActionPressed("move_left")){ _Velocity.x += -_Movespeed; }
@@ -118,7 +130,7 @@ switch(area.CollisionMask)
         if(intersection.Contains("position"))
         {
             pos = (Vector3)intersection["position"];
-            LookAt(new Vector3(pos.x,0,pos.z),Vector3.Up);
+            LookAt(new Vector3(pos.x,GlobalTransform.origin.y,pos.z),Vector3.Up);
         }
 
     }

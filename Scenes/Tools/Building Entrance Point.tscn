@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/BuildingEntrancePointManager.cs" type="Script" id=1]
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 0.5, 0.5, 0.5 )
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 0.5, 0.5, 0.5 )
+
+[node name="Building Entrance Point" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Inside" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Inside"]
+shape = SubResource( 11 )
+
+[node name="Outside" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Outside"]
+shape = SubResource( 10 )
+[connection signal="area_entered" from="Inside" to="." method="AreaEntered"]
+[connection signal="area_entered" from="Outside" to="." method="AreaExited"]
