@@ -14,11 +14,15 @@ Vector3[] path;
 int path_ind;
 Navigation nav;
 
+
+int hp = 100;
+
 public float HP = 100;
 
 public override void _Ready()
 {
 GameManager = (GameManager)Owner;
+AnimPlayer = (AnimationPlayer)FindNode("AnimationPlayer");
 DetectionArea = (Area)GetChild(1);
 DetectionRadius = (CollisionShape)DetectionArea.GetChild(0);
 AIUpdateTimer = (Timer)GetChild(3);
@@ -33,11 +37,11 @@ move_to(this.Transform.origin);
     path = nav.GetSimplePath(GlobalTransform.origin,Target);
     }   
 
-    public override void _Process(float delta)
+    public override void _PhysicsProcess(float delta)
     {
         if(Target != null)
         {
-        LookAt(new Vector3(Target.GlobalTransform.origin.x,0,Target.GlobalTransform.origin.z),Vector3.Up);
+        LookAt(new Vector3(Target.GlobalTransform.origin.x,GlobalTransform.origin.y,Target.GlobalTransform.origin.z),Vector3.Up);
         }
     if(path_ind < path.Length)
     {
@@ -46,7 +50,6 @@ move_to(this.Transform.origin);
         if(move_vec.Length() < 0.1)
         {
         path_ind += 1;
-        
         }
         else
         {
@@ -63,16 +66,16 @@ move_to(this.Transform.origin);
 
     public void _OnSoundAreaEntered(Area hek)
     {
-        if(hek.CollisionMask == 512)
+        if(hek.CollisionMask == 1)
         {
-            Target = GameManager.PlayerSpatial;
-        move_to(GameManager.PlayerSpatial.GlobalTransform.origin);
+            Target = GameManager.Player;
+        move_to(hek.GlobalTransform.origin);
         }
     }
 
         public void _OnSoundAreaLeft(Area hek)
     {
-        if(hek.CollisionMask == 512)
+        if(hek.CollisionMask == 1)
         {
             Target = null;
         }
@@ -80,9 +83,9 @@ move_to(this.Transform.origin);
 
         public void _OnAttackAreaEntered(Area hek)
     {
-if(hek.CollisionLayer == 1024)
-    {
-        GD.Print("ECH!!!!!!!");
-    }
+
+            GD.Print(hek.Name);
+
+
     }
 }

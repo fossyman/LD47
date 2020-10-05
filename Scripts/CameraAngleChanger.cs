@@ -17,17 +17,17 @@ private bool isChanged=false;
     {
         if(isChanged)
         {
-        CameraAngleSpatial.Rotation = CameraAngleSpatial.Rotation.LinearInterpolate(new Vector3(Mathf.Deg2Rad(Angle.x),0,0),0.01f);
+        CameraAngleSpatial.Rotation = CameraAngleSpatial.Rotation.LinearInterpolate(new Vector3(Mathf.Deg2Rad(Angle.x),0,0),0.05f);
         }
         else
         {
-        CameraAngleSpatial.Rotation = CameraAngleSpatial.Rotation.LinearInterpolate(Vector3.Zero,0.01f);
+        CameraAngleSpatial.Rotation = CameraAngleSpatial.Rotation.LinearInterpolate(Vector3.Zero,0.05f);
         }
     }
 
     public void AreaEntered(Area area)
     {
-        if(area.CollisionMask == 1)
+        if(area.CollisionLayer == 2048)
         {
             isChanged = true;
         }
@@ -35,7 +35,7 @@ private bool isChanged=false;
 
         public void AreaExited(Area area)
     {
-        if(area.CollisionMask == 1)
+        if(area.CollisionLayer == 2048)
         {
             isChanged = false;
         }

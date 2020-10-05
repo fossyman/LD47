@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Models/Raw/Wood.material" type="Material" id=1]
-[ext_resource path="res://Scenes/Tools/Building Entrance Point.tscn" type="PackedScene" id=2]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Plane004"
@@ -12,6 +11,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 97559,
 "index_count": 30,
+"material": ExtResource( 1 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 22
@@ -31,16 +31,6 @@ surfaces/0 = {
 "skeleton_aabb": [  ],
 "vertex_count": 4
 }
-
-[sub_resource type="SpatialMaterial" id=6]
-resource_name = "Wood"
-albedo_color = Color( 0.906332, 0.906332, 0.906332, 1 )
-roughness = 0.5
-emission_enabled = true
-emission = Color( 0, 0, 0, 1 )
-emission_energy = 1.0
-emission_operator = 0
-emission_on_uv2 = false
 
 [sub_resource type="ArrayMesh" id=3]
 resource_name = "Plane001"
@@ -86,49 +76,31 @@ surfaces/0 = {
 "vertex_count": 22
 }
 
-[sub_resource type="SpatialMaterial" id=7]
-resource_name = "Wood"
-flags_transparent = true
-params_cull_mode = 1
-albedo_color = Color( 0.906332, 0.906332, 0.906332, 1 )
-roughness = 0.5
-emission_enabled = true
-emission = Color( 0, 0, 0, 1 )
-emission_energy = 1.0
-emission_operator = 0
-emission_on_uv2 = false
-
 [node name="Shed" type="Spatial"]
 
-[node name="Roof" type="MeshInstance" parent="."]
+[node name="Plane004" type="MeshInstance" parent="."]
 transform = Transform( 8.9407e-08, 0, -6, -1.5, 0, -5.36442e-07, 0, 1.8, 0, -0.0979156, 2.3, 0 )
 mesh = SubResource( 1 )
-material/0 = ExtResource( 1 )
+material/0 = null
 
-[node name="Plane" type="MeshInstance" parent="."]
-transform = Transform( 8.9407e-08, 1.5, 0, -1.5, 1.3411e-07, 0, 0, 0, 7.2, -6.09791, 2.3, 0 )
+[node name="Plane" type="MeshInstance" parent="Plane004"]
+transform = Transform( 1, 0, 0, 0, 0, 4, 0, -0.25, 0, 0, 0, 1 )
 mesh = SubResource( 2 )
-material/0 = SubResource( 6 )
+material/0 = null
 
-[node name="Plane001" type="MeshInstance" parent="."]
-transform = Transform( 8.9407e-08, 1.11464e-06, 6, -1.5, 9.96566e-14, 5.36442e-07, 0, -1.8, 3.34392e-07, -0.0979156, 2.3, 7.2 )
+[node name="Plane001" type="MeshInstance" parent="Plane004"]
+transform = Transform( 1, 0, 0, 0, -1, 1.85773e-07, 0, -1.85773e-07, -1, 0, 4, 0 )
 mesh = SubResource( 3 )
-material/0 = ExtResource( 1 )
+material/0 = null
 
-[node name="Plane002" type="MeshInstance" parent="."]
-transform = Transform( 8.9407e-08, 0, -6, -1.5, 0, -5.36442e-07, 0, 1.8, 0, -0.0979156, 2.3, -7.2 )
+[node name="Plane002" type="MeshInstance" parent="Plane004"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0 )
 mesh = SubResource( 4 )
-material/0 = ExtResource( 1 )
+material/0 = null
 
-[node name="Front" type="MeshInstance" parent="."]
-transform = Transform( 8.9407e-08, -1.5, 8.58307e-06, -1.5, -1.3411e-07, 7.67386e-13, 0, -1.60933e-07, -7.2, 5.90208, 2.3, 0 )
+[node name="Plane003" type="MeshInstance" parent="Plane004"]
+transform = Transform( 1, 0, 0, 0, -8.9407e-08, -4, 0, 0.25, -1.43051e-06, 0, 0, -1 )
 mesh = SubResource( 5 )
-material/0 = SubResource( 7 )
+material/0 = null
 
-[node name="Building Entrance Point" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9, 0.294179, 0 )
-ThingsToHide = [ NodePath("../Roof") ]
-ThingsGoTransparent = [ NodePath("../Front") ]
-MatColor = Color( 1, 1, 1, 1 )
-
-[editable path="Building Entrance Point"]
+[node name="StaticBody" type="StaticBody" parent="."]

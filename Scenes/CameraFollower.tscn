@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/CameraFollower.cs" type="Script" id=1]
+[ext_resource path="res://new_dynamicfont.tres" type="DynamicFont" id=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 1 )
@@ -9,3 +17,31 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 11, 10 )
 current = true
 fov = 50.0
+
+[node name="Control" type="Control" parent="Camera"]
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Camera/Control"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 976.252, 538.129 )
+scale = Vector2( 1.57202, 1382.04 )
+texture = SubResource( 2 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera/Control"]
+margin_top = 225.0
+margin_right = 1925.0
+margin_bottom = 600.0
+custom_fonts/normal_font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+bbcode_enabled = true
+bbcode_text = "[center]heeheheeehehehheheh"
+tab_size = 24
+text = "heeheheeehehehheheh"
+__meta__ = {
+"_edit_use_anchors_": false
+}
